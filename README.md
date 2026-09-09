@@ -181,4 +181,4 @@ stat computation. All pass against the current codebase.
 
 ## Team
 
-_Add your team name and members here before submission._
+_HumanityX_
