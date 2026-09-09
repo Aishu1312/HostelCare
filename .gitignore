@@ -1,0 +1,23 @@
+# Secrets — never commit real credentials
+.streamlit/secrets.toml
+.env
+*firebase*key*.json
+serviceAccountKey.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.venv/
+venv/
+env/
+*.egg-info/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Streamlit
+.streamlit/secrets.toml
