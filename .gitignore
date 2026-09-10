@@ -21,3 +21,4 @@ env/
 
 # Streamlit
 .streamlit/secrets.toml
+*.db

@@ -16,10 +16,19 @@ def get_current_utc_datetime() -> datetime:
     return datetime.now(timezone.utc)
 
 
-def format_timestamp(dt: datetime) -> str:
+def format_timestamp(dt) -> str:
     """Render a datetime for display, e.g. '09 Sep 2026, 10:30 PM'."""
     if dt is None:
         return "—"
+    if isinstance(dt, str):
+        if not dt:
+            return "—"
+        try:
+            # Strip trailing Z and handle +00:00 / naive strings from SQLite
+            cleaned = dt.replace("Z", "+00:00")
+            dt = datetime.fromisoformat(cleaned)
+        except (ValueError, TypeError):
+            return dt
     return dt.strftime(TIMESTAMP_DISPLAY_FORMAT)
 
 

@@ -11,7 +11,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 
 from services.complaint_service import get_dashboard_stats, update_status
 from utils.constants import (
-    STATUS_IN_PROGRESS,
+    STATUS_APPROVED,
     STATUS_OPTIONS,
     STATUS_PENDING,
     STATUS_RESOLVED,
@@ -19,7 +19,7 @@ from utils.constants import (
 
 
 def test_status_options_are_canonical_and_exact():
-    assert STATUS_OPTIONS == ["Pending", "In Progress", "Resolved"]
+    assert STATUS_OPTIONS == ["Pending", "Approved", "Resolved"]
     # No lowercase/underscored aliases anywhere in the canonical list.
     for status in STATUS_OPTIONS:
         assert "_" not in status
@@ -50,17 +50,17 @@ def test_update_status_rejects_non_canonical_value():
 
 def test_update_status_accepts_canonical_value():
     fake_service = _FakeFirebaseService()
-    success, payload = update_status(fake_service, "CMP-1", STATUS_IN_PROGRESS)
+    success, payload = update_status(fake_service, "CMP-1", STATUS_APPROVED)
     assert success is True
-    assert payload["status"] == STATUS_IN_PROGRESS
-    assert fake_service.calls == [("CMP-1", STATUS_IN_PROGRESS)]
+    assert payload["status"] == STATUS_APPROVED
+    assert fake_service.calls == [("CMP-1", STATUS_APPROVED)]
 
 
 def test_dashboard_stats_computed_dynamically():
     complaints = [
         {"status": STATUS_PENDING},
         {"status": STATUS_PENDING},
-        {"status": STATUS_IN_PROGRESS},
+        {"status": STATUS_APPROVED},
         {"status": STATUS_RESOLVED},
         {"status": STATUS_RESOLVED},
         {"status": STATUS_RESOLVED},
@@ -68,7 +68,7 @@ def test_dashboard_stats_computed_dynamically():
     stats = get_dashboard_stats(complaints)
     assert stats["total"] == 6
     assert stats[STATUS_PENDING] == 2
-    assert stats[STATUS_IN_PROGRESS] == 1
+    assert stats[STATUS_APPROVED] == 1
     assert stats[STATUS_RESOLVED] == 3
 
 

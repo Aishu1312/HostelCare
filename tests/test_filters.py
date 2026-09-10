@@ -13,14 +13,14 @@ from services.complaint_service import filter_complaints, search_complaints
 from utils.constants import (
     FILTER_ALL_CATEGORY,
     FILTER_ALL_STATUS,
-    STATUS_IN_PROGRESS,
+    STATUS_APPROVED,
     STATUS_PENDING,
     STATUS_RESOLVED,
 )
 
 SAMPLE_COMPLAINTS = [
     {"complaint_id": "CMP-1", "room_number": "201", "category": "Electrical", "status": STATUS_PENDING},
-    {"complaint_id": "CMP-2", "room_number": "305", "category": "Plumbing", "status": STATUS_IN_PROGRESS},
+    {"complaint_id": "CMP-2", "room_number": "305", "category": "Plumbing", "status": STATUS_APPROVED},
     {"complaint_id": "CMP-3", "room_number": "112", "category": "Cleaning", "status": STATUS_RESOLVED},
     {"complaint_id": "CMP-4", "room_number": "201", "category": "Electrical", "status": STATUS_RESOLVED},
 ]

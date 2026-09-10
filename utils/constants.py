@@ -12,24 +12,24 @@ else in the codebase.
 # Canonical status values
 # ---------------------------------------------------------------------------
 STATUS_PENDING = "Pending"
-STATUS_IN_PROGRESS = "In Progress"
+STATUS_APPROVED = "Approved"
 STATUS_RESOLVED = "Resolved"
 
 # Ordered so the admin panel can present a logical Pending -> In Progress ->
 # Resolved progression.
-STATUS_OPTIONS = [STATUS_PENDING, STATUS_IN_PROGRESS, STATUS_RESOLVED]
+STATUS_OPTIONS = [STATUS_PENDING, STATUS_APPROVED, STATUS_RESOLVED]
 
 # Icon + color kept alongside status text so the UI never relies on color
 # alone (accessibility requirement).
 STATUS_ICONS = {
     STATUS_PENDING: "🟡",
-    STATUS_IN_PROGRESS: "🔵",
+    STATUS_APPROVED: "🔵",
     STATUS_RESOLVED: "🟢",
 }
 
 STATUS_BADGE_COLORS = {
     STATUS_PENDING: "#F59E0B",      # warning
-    STATUS_IN_PROGRESS: "#2563EB",  # primary
+    STATUS_APPROVED: "#2563EB",  # primary
     STATUS_RESOLVED: "#16A34A",     # success
 }
 
