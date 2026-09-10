@@ -301,25 +301,25 @@ if not st.session_state["logged_in"]:
             if st.button("Continue", type="primary", use_container_width=True):
                 u = username.strip().lower()
                 p = password.strip()
-                if u == "admin" and p == "password":
+                if u == "admin" and p == "admin123":
                     st.session_state["logged_in"] = True
                     st.session_state["role"] = "admin"
                     st.toast("Welcome back, Admin! 👑", icon="✅")
                     st.rerun()
-                elif u == "student" and p == "password":
+                elif u == "student" and p == "student123":
                     st.session_state["logged_in"] = True
                     st.session_state["role"] = "student"
                     st.toast("Welcome! 🎓", icon="✅")
                     st.rerun()
                 else:
-                    st.error(f"Invalid credentials. Use **admin/password** or **student/password**")
+                    st.error(f"Invalid credentials. Use **admin/admin123** or **student/student123**")
             
             st.markdown("""
             <div style='margin-top:18px; text-align:center;'>
                 <p style='font-size:12px; color:#9c958d; margin-bottom:8px;'>Demo accounts</p>
                 <div class='role-hint'>
-                    <span class='role-pill'>admin / password</span>
-                    <span class='role-pill'>student / password</span>
+                    <span class='role-pill'>admin / admin123</span>
+                    <span class='role-pill'>student / student123</span>
                 </div>
             </div>
             """, unsafe_allow_html=True)
